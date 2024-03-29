@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-server
+  template:
+    metadata:
+      labels:
+        app: web-server
+    spec:
+      containers:
+        - name: web-server
+          image: bharathviswam/web-server:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "200m"  
+              memory: "512Mi" 
+            limits:
+              cpu: "500m"
+              memory: "1Gi" 

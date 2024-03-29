@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-server-loadbalancer
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5001  # Port on which the service will be exposed
+      targetPort: 5001  # Port on which the web server container listens
+  selector:
+    app: app-server
